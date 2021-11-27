@@ -8,11 +8,12 @@ class Parse(models.Model):
     times_followed = models.PositiveIntegerField(default=0)
     raw_url = models.URLField()
     downloadable_url = models.CharField(max_length=1000)
+    social_media_source = models.CharField(max_length=1000)
 
     class Meta:
         ordering = ["-created"]
 
     def save(self, *args, **kwargs):
         if not self.downloadable_url:
-            self.downloadable_url = parse_url(self.raw_url)
+            self.social_media_source, self.downloadable_url = parse_url(self.raw_url)
         super().save(*args, **kwargs)

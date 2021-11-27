@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Facebook Media Downloader</title>
-
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-			crossorigin="anonymous"
-		/>
-
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-			crossorigin="anonymous"
-		/>
+		<title>didownloadin</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+		crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+		crossorigin="anonymous" />
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+		</script>
 	</head>
 	<body>
 		{% block body %}
 		<div class="container">
-			<div class="card mt-5">
-				<div class="card-header text-center py-3">
-					<h3>Facebook Media Downloader</h3>
+			<a class="text-center" style="font-size: 20px; text-decoration: none;color: black" href="">
+				<div style="padding-top: 30px; padding-bottom: 15px; padding-right: 15px">
+					<h1>
+						<b>di</b>download<b>in</b>
+					</h1>
+					<h6>dapetin link media dari sosmed kesayangan anda untuk di download</h6>
 				</div>
-				<div class="px-3 py-4">
+			</a>
+			<div class="container">
+				<div class="px-3 py-2" style="
+				padding: 15px;
+				border-radius: 25px;
+				background: -webkit-linear-gradient(45deg, #136a8a, #267871);
+                background: -o-linear-gradient(45deg, #136a8a, #267871);
+                background: -moz-linear-gradient(45deg, #136a8a, #267871);
+                background: linear-gradient(45deg, #136a8a, #267871);
+				margin-left: 50px;
+				margin-right: 50px;
+				margin-top: 10px">
 					<form action="" method="POST">
 						{% csrf_token %}
-						<div class="row g-1">
-							<div class="col-10">{{form.raw_url}}</div>
+						<div class="row justify-content-center g-1">
+							<div class="col-10" style="width: 60%;">{{form.raw_url}}</div>
 							<div class="col-2">
-								<button class="btn btn-success btn-lg w-100" type="submit">
-									Generate URL
+								<button class="btn btn-success btn-lg w-100" type="submit" style="font-size: larger; background: #27abb4;">
+									mana linknya?
 								</button>
 							</div>
 						</div>
@@ -48,9 +58,20 @@
 			{% endif %} {% if downloadable_url %}
 
 			<div class="mx-auto text-center mt-5">
-				<h5 class="text-danger">Shortened URL for <a href="{{raw_url}}"> {{raw_url}}</a></h5><br>
-                <a href="{{downloadable_url}}" class="btn btn-primary" target="_blank">Download Here</a>
-                <a href="{{raw_url}}" class="btn btn-success" target="_blank">Go To Source</a>
+				<h1>link downloadnya dimari gan</h1>
+				<h3>
+					<a href="{{downloadable_url}}" id="afterUrl" target="_blank">{{downloadable_url}}</a>
+					<button class="btn bg-transparent" style="margin-left: -10px; margin-top: -20px;"><img src = "https://cdn-icons-png.flaticon.com/512/54/54702.png"
+						alt = "Learn HTML5" height = "16" width = "16" title="kopi dimari" onclick="copyElementText('afterUrl')"/></button>
+				</h3>
+				<h5><br>
+					<span>
+						link ke sosmed nya gan, btw ini dari {{social_media_source}}:<br>
+						<a href="{{raw_url}}" id="beforeUrl" target="_blank">{{raw_url}}</a>
+						<button class="btn bg-transparent" style="margin-left: -10px; margin-top: -15px;"><img src = "https://cdn-icons-png.flaticon.com/512/54/54702.png"
+							alt = "Learn HTML5" height = "16" width = "16" title="kopi dimari" onclick="copyElementText('beforeUrl')"/></button>
+					</span>
+				</h5>
 			</div>
 			{% endif %}
 		</div>
@@ -61,5 +82,43 @@
 			integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 			crossorigin="anonymous"
 		></script>
+		<script>
+			if (window.history.replaceState) {
+				window.history.replaceState(
+					null,
+					null,
+					window.location.href,
+				);
+			};
+			function copyElementText(id) {
+				var copyText = document.getElementById(id).href;
+				navigator.clipboard.writeText(copyText);
+				alert("URL " + copyText.slice(0, 30) + "..." + " udah di kopi nih!");
+			}
+		</script>
+		<style>
+			.btn {
+				transition: 0.5s;
+				opacity: 1;
+			}
+			.btn:hover {
+				transition: 0.5s;
+				opacity: 0.6;
+			}
+			#beforeUrl, #afterUrl {
+				display: inline-block;
+				max-width: 60%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				word-wrap: break-word;
+			}
+			@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+			body {
+				font-family: 'Outfit', sans-serif;
+				background: #e0e0e0;
+				opacity: 1;
+			}
+		</style>
 	</body>
 </html>

@@ -12,8 +12,10 @@ from django import forms
 
 class ParseForm(forms.ModelForm):
     raw_url = forms.URLField(widget=forms.URLInput(
-        attrs={"class": "form-control form-control-lg",
-               "placeholder": "Enter Facebook url here"}
+        attrs={
+            "class": "form-control form-control-lg",
+            "placeholder": "masukin link dimari",
+            "style": "text-align: center;"}
     ))
 
     class Meta:
@@ -36,10 +38,9 @@ def home(request):
         # If URL is valid
         if used_form.is_valid():
             downloadable_object = used_form.save()
-            downloadable = downloadable_object.downloadable_url
-            raw = downloadable_object.raw_url
-            context['downloadable_url'] = downloadable
-            context['raw_url'] = raw
+            context['downloadable_url'] = downloadable_object.downloadable_url
+            context['raw_url'] = downloadable_object.raw_url
+            context['social_media_source'] = downloadable_object.social_media_source
             return render(request, template, context)
 
         # Else
