@@ -15,7 +15,9 @@ class ParseForm(forms.ModelForm):
         attrs={
             "class": "form-control form-control-lg",
             "placeholder": "masukin link dimari",
-            "style": "text-align: center;"}
+            "style": "text-align: center;",
+            "oninvalid": "this.setCustomValidity('masukin link dimari gan')",
+            'oninput': "setCustomValidity('masukin link nya yang bener gan')"}
     ))
 
     class Meta:
