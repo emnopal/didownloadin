@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Added apps
     'downloader',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',

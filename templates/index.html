@@ -59,14 +59,16 @@
 
 			<div class="mx-auto text-center mt-5">
 				<h1>link downloadnya dimari gan</h1>
-				<h3>
-					<a href="{{downloadable_url}}" id="afterUrl" target="_blank">{{downloadable_url}}</a>
-					<button class="btn bg-transparent" style="margin-left: -10px; margin-top: -20px;"><img src = "https://cdn-icons-png.flaticon.com/512/54/54702.png"
-						alt = "Learn HTML5" height = "16" width = "16" title="kopi dimari" onclick="copyElementText('afterUrl')"/></button>
-				</h3>
+				<h5>
+					{% for key, value in downloadable_url.items %}
+						<a href="{{downloadable_url}}" id="afterUrl" target="_blank">{{value}}</a>
+						<button class="btn bg-transparent" style="margin-left: -10px; margin-top: -15px;"><img src = "https://cdn-icons-png.flaticon.com/512/54/54702.png"
+							alt = "Learn HTML5" height = "16" width = "16" title="kopi dimari" onclick="copyElementText('afterUrl')"/> Resolusi: {{key}}</button>
+					{% endfor %}
+				</h5>
 				<h5><br>
 					<span>
-						link ke sosmed nya gan, btw ini dari {{social_media_source}}:<br>
+						link ke sosmed nya gan, btw ini dari sosmed: {{social_media_source}}:<br>
 						<a href="{{raw_url}}" id="beforeUrl" target="_blank">{{raw_url}}</a>
 						<button class="btn bg-transparent" style="margin-left: -10px; margin-top: -15px;"><img src = "https://cdn-icons-png.flaticon.com/512/54/54702.png"
 							alt = "Learn HTML5" height = "16" width = "16" title="kopi dimari" onclick="copyElementText('beforeUrl')"/></button>
